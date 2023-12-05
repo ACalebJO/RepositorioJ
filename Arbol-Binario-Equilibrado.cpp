@@ -1,6 +1,6 @@
 #include "Milibreria.h"
 
-// Función para crear un nuevo nodo con un valor dado
+// FunciÃ³n para crear un nuevo nodo con un valor dado
 struct Nodo* crearNodo(int valor) {
     // Asigna memoria para el nuevo nodo
     struct Nodo* nodo = (struct Nodo*)malloc(sizeof(struct Nodo));
@@ -13,48 +13,48 @@ struct Nodo* crearNodo(int valor) {
     return nodo;
 }
 
-// Función para insertar un nuevo valor en el árbol 
+// FunciÃ³n para insertar un nuevo valor en el Ã¡rbol 
 struct Nodo* insertar(struct Nodo* raiz, int valor) {
-    // Si la raíz es nula, crear un nuevo nodo con el valor 
+    // Si la raÃ­z es nula, crear un nuevo nodo con el valor 
     if (raiz == NULL) {
         return crearNodo(valor);
     }
 
-    // Si el valor es menor que el valor de la raíz, insertar a la izquierda
+    // Si el valor es menor que el valor de la raÃ­z, insertar a la izquierda
     if (valor < raiz->valor) {
         raiz->izquierda = insertar(raiz->izquierda, valor);
     } 
-    // Si el valor es mayor que el valor de la raíz, insertar a la derecha
+    // Si el valor es mayor que el valor de la raÃ­z, insertar a la derecha
     else if (valor > raiz->valor) {
         raiz->derecha = insertar(raiz->derecha, valor);
     }
 
-    // Devolver la raíz actualizada
+    // Devolver la raÃ­z actualizada
     return raiz;
 }
 
-// Función para imprimir el árbol en orden 
+// FunciÃ³n para imprimir el Ã¡rbol en orden 
 void imprimirEnorden(struct Nodo* raiz) {
-    // Si la raíz no es nula
+    // Si la raÃ­z no es nula
     if (raiz != NULL) {
-        // Imprimir en orden: izquierda, raíz, derecha
+        // Imprimir en orden: izquierda, raÃ­z, derecha
         imprimirEnorden(raiz->izquierda);
         printf("%d ", raiz->valor);
         imprimirEnorden(raiz->derecha);
     }
 }
 
-// Función para imprimir el árbol visualmente con niveles
+// FunciÃ³n para imprimir el Ã¡rbol visualmente con niveles
 void imprimirArbol(struct Nodo* raiz, int nivel) {
-    // Si la raíz es nula, no hay nada que imprimir
+    // Si la raÃ­z es nula, no hay nada que imprimir
     if (raiz == NULL) {
         return;
     }
 
-    // Imprimir el subárbol derecho, aumentando el nivel
+    // Imprimir el subÃ¡rbol derecho, aumentando el nivel
     imprimirArbol(raiz->derecha, nivel + 1);
 
-    // Imprimir espacios para visualizar la estructura del árbol
+    // Imprimir espacios para visualizar la estructura del Ã¡rbol
     for (int i = 0; i < nivel; i++) {
         printf("    ");
     }
@@ -62,16 +62,16 @@ void imprimirArbol(struct Nodo* raiz, int nivel) {
     // Imprimir el valor del nodo
     printf("%d\n", raiz->valor);
 
-    // Imprimir el subárbol izquierdo, aumentando el nivel
+    // Imprimir el subÃ¡rbol izquierdo, aumentando el nivel
     imprimirArbol(raiz->izquierda, nivel + 1);
 }
 
 
 int main() {
-    // Inicializar la raíz del árbol
+    // Inicializar la raÃ­z del Ã¡rbol
     struct Nodo* raiz = NULL;
 
-    //  valores en el árbol
+    //  valores en el Ã¡rbol
     raiz = insertar(raiz, 50);
     raiz = insertar(raiz, 30);
     raiz = insertar(raiz, 20);
@@ -80,11 +80,11 @@ int main() {
     raiz = insertar(raiz, 60);
     raiz = insertar(raiz, 80);
 
-    // Imprimir el árbol visualmente
-    printf("\nArbol binario:\n");
+    // Imprimir el Ã¡rbol visualmente
+    printf("\nArbol binario equilibrado:\n");
     imprimirArbol(raiz, 0);
 
-    // Imprimir el árbol en orden 
+    // Imprimir el Ã¡rbol en orden 
     printf("Arbol binario en orden: ");
     imprimirEnorden(raiz);
     printf("\n");
